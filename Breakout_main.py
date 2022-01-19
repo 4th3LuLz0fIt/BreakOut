@@ -2,7 +2,7 @@
 import pygame
 # Let's import the Paddle Class
 from paddle import Paddle
-
+from Ball import Ball
 pygame.init()
 
 # Define some colors
