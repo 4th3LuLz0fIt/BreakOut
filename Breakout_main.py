@@ -2,7 +2,8 @@
 import pygame
 # Let's import the Paddle Class
 from paddle import Paddle
-from Ball import Ball
+from ball import Ball
+
 pygame.init()
 
 # Define some colors
@@ -29,8 +30,14 @@ paddle = Paddle(LIGHTBLUE, 100, 10)
 paddle.rect.x = 350
 paddle.rect.y = 560
 
+#Create the ball sprite
+ball = Ball(WHITE, 10,10)
+ball.rect.x = 345
+ball.rect.y = 195
+
 # Add the paddle to the list of sprites
 all_sprites_list.add(paddle)
+all_sprites_list.add(ball)
 
 # The loop will carry on until the user exits the game (e.g. clicks the close button)
 carryOn = True

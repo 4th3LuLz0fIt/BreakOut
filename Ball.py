@@ -2,6 +2,7 @@ import pygame
 
 from random import randint
 
+
 class Ball(pygame.sprite.Sprite):
     # This class represents a ball. It derives from the "Sprite" class in Pygame
 
@@ -11,19 +12,17 @@ class Ball(pygame.sprite.Sprite):
 
         # Pass in the color of the ball, its width and height.
         # Set the background color and set it to be transparent
-        self.image = pygame.Surface([width,height])
+        self.image = pygame.Surface([width, height])
         self.image.fill(BLACK)
         self.image.set_colorkey(BLACK)
-
 
         # Draw the ball (a rectangle)
         pygame.draw.rect(self.image, color, [0, 0, width, height])
 
-        self.velocity =[randint(4,8),randint(-8,8)]
+        self.velocity = [randint(4, 8), randint(-8, 8)]
 
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
-
 
     def update(self):
         self.rect.x += self.velocity[0]
