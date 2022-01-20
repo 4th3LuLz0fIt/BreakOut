@@ -7,12 +7,12 @@ from ball import Ball
 pygame.init()
 
 # Define some colors
-WHITE = (255, 255, 255,)
+WHITE = (255, 255, 255)
 DARKBLUE = (26, 90, 190)
 LIGHTBLUE = (0, 176, 240)
-RED = ()
-ORANGE = ()
-YELLOW = ()
+RED = (255, 0, 0,)
+ORANGE = (255, 100, 0)
+YELLOW = (255, 255, 0)
 
 score = 0
 lives = 3
@@ -21,6 +21,7 @@ lives = 3
 size = (800, 600)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Breakout Game")
+
 
 # This will be a list that will contain all the sprites we intend to use in our game.
 all_sprites_list = pygame.sprite.Group()
@@ -31,13 +32,14 @@ paddle.rect.x = 350
 paddle.rect.y = 560
 
 #Create the ball sprite
-ball = Ball(WHITE, 10,10)
-ball.rect.x = 345
-ball.rect.y = 195
+
+#ball.Ball = (WHITE, 10, 10)
+#ball.rect.x = 345
+#ball.rect.y = 195
 
 # Add the paddle to the list of sprites
 all_sprites_list.add(paddle)
-all_sprites_list.add(ball)
+#all_sprites_list.add(ball)
 
 # The loop will carry on until the user exits the game (e.g. clicks the close button)
 carryOn = True
