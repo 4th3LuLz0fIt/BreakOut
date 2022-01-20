@@ -33,13 +33,13 @@ paddle.rect.y = 560
 
 #Create the ball sprite
 
-#ball.Ball = (WHITE, 10, 10)
-#ball.rect.x = 345
-#ball.rect.y = 195
+ball.Ball = (WHITE, 10, 10)
+ball.rect.x = 345
+ball.rect.y = 195
 
 # Add the paddle to the list of sprites
 all_sprites_list.add(paddle)
-#all_sprites_list.add(ball)
+all_sprites_list.add(ball)
 
 # The loop will carry on until the user exits the game (e.g. clicks the close button)
 carryOn = True
@@ -62,6 +62,23 @@ while carryOn:
         paddle.moveRight(5)
 
     # Game logic goes here
+    all_sprites_list.update()
+
+    # Check if the ball is bouncing against any of the 4 walls:
+    if ball.rect.x >=790:
+        ball.velocity[0] = -ball.velocity[0]
+    if ball.rect.x <= 0:
+        ball.velocity[0] = -ball.velocity[0]
+    if ball.rect.y > 590:
+        ball.velocity[1] = -ball.velocity[1]
+    if ball.rect.y < 40:
+        ball.velocity[1] = -ball.velocity[1] 
+
+    # Collision detection between ball and paddles
+    if pygame.sprite.collide_mask(ball, paddle):
+        ball.rect.x -= ball.velocity[0]
+        ball.rect.y -= ball.velocity[1]
+        ball.bounce()  
 
     # --- Drawing code should go here
     # First, clear the screen to dark blue
