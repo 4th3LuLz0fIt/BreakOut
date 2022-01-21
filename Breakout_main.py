@@ -2,7 +2,7 @@
 import pygame
 # Let's import the Paddle Class
 from paddle import Paddle
-from ball import Ball
+import ball
 
 
 pygame.init()
