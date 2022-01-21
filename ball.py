@@ -1,6 +1,8 @@
 import pygame
 from random import randint
-BLACK = (0 ,0 ,0)
+
+BLACK = (0, 0, 0)
+
 
 class Ball(pygame.sprite.Sprite):
     # This class represents a ball. It derives from the "Sprite" class in Pygame
@@ -31,7 +33,6 @@ class Ball(pygame.sprite.Sprite):
         self.velocity.x = self.velocity[0]
         self.velocity.y = randint(-8, -8)
 
-
     def update(self):
         self.rect.x += self.velocity[0]
         self.rect.y += self.velocity[1]
@@ -39,5 +40,7 @@ class Ball(pygame.sprite.Sprite):
     def bounce(self):
         self.velocity[0] = -self.velocity[0]
         self.velocity[1] = randint(-8, 8)
-        
 
+
+def rect():
+    return None
