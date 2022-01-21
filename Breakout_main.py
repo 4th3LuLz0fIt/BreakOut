@@ -54,7 +54,7 @@ for i in range(7):
     all_sprites_list.add(brick)
     all_bricks.add(brick)
     # row 3
-for i in range(7)
+for i in range(7):
     brick = Brick(YELLOW, 80, 30)
     brick.rect.x = 60 + i * 100
     brick.rect.y = 140
@@ -97,7 +97,7 @@ while carryOn:
         ball.velocity[1] = -ball.velocity[1]
     if ball.rect.y < 40:
         ball.velocity[1] = -ball.velocity[1]
-        lives -=1
+        lives -= 1
         if lives == 0:
             # Display Game Over Message for 3 seconds
             font = pygame.font.Font(None, 74)
@@ -106,11 +106,31 @@ while carryOn:
             pygame.display.flip()
             pygame.time.wait(3000)
 
+            # Stop the game
+            carryOn = False
+
         # Collision detection between ball and paddles
     if pygame.sprite.collide_mask(ball, paddle):
         ball.rect.x -= ball.velocity[0]
         ball.rect.y -= ball.velocity[1]
         ball.bounce()
+
+    # Check if the ball collides with any of bricks
+    brick_collision_list = pygame.sprite.spritecollide(ball, all_bricks, False)
+    for brick in brick_collision_list:
+        ball.bounce()
+        score += 1
+        brick.kill()
+        if len(all_bricks) == 0:
+            # Display Level Complete Message for 3 seconds
+            font = pygame.font.Font(None, 74)
+            text = font.render("LEVEL COMPLETE", 1, WHITE)
+            screen.blit(text, (200, 300))
+            pygame.display.flip()
+            pygame.time.wait(3000)
+
+            # Stop the game
+            carryOn = False
 
         # --- Drawing code should go here
     # First, clear the screen to dark blue
@@ -118,7 +138,6 @@ while carryOn:
     pygame.draw.line(screen, WHITE, [0, 38], [800, 38], 2)
 
     # Display the score and the number of lives at the top of the screen
-
     font = pygame.font.Font(None, 34)
     text = font.render("Score: " + str(score), 1, WHITE)
     screen.blit(text, (20, 10))
